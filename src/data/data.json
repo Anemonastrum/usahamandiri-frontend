@@ -1,0 +1,100 @@
+{
+  "Header": {
+    "title": "Hijaukan landscape rumah anda.",
+    "paragraph": "Kami yakin akan menyediakan produk dengan kualitas terbaik Dengan layanan terbaik, kami pastikan produk kami berada dalam kondisi terbaik."
+  },
+  "About": {
+    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "paragraph2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    
+    "Why": [
+      "Lorem ipsum dolor",
+      "Tempor incididunt",
+      "Lorem ipsum dolor",
+      "Incididunt ut labore"
+    ],
+    "Why2": [
+      "Aliquip ex ea commodo",
+      "Lorem ipsum dolor",
+      "Exercitation ullamco",
+      "Lorem ipsum dolor"
+    ]
+  },
+  "Gallery": [
+    {
+      "title": "Aglonema",
+      "largeImage": "https://files.anemona.cloud/api/public/dl/nuccMu4g?inline=true",
+      "smallImage": "https://files.anemona.cloud/api/public/dl/nuccMu4g?inline=true"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "https://files.anemona.cloud/api/public/dl/_jXiE1zO?inline=true",
+      "smallImage": "https://files.anemona.cloud/api/public/dl/_jXiE1zO?inline=true"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "https://files.anemona.cloud/api/public/dl/XaMBo8sr?inline=true",
+      "smallImage": "https://files.anemona.cloud/api/public/dl/XaMBo8sr?inline=true"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "https://files.anemona.cloud/api/public/dl/uoHFhXVu?inline=true",
+      "smallImage": "https://files.anemona.cloud/api/public/dl/uoHFhXVu?inline=true"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "https://files.anemona.cloud/api/public/dl/fkGhiuSa?inline=true",
+      "smallImage": "https://files.anemona.cloud/api/public/dl/fkGhiuSa?inline=true"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "https://files.anemona.cloud/api/public/dl/-0C2IqdG?inline=true",
+      "smallImage": "https://files.anemona.cloud/api/public/dl/-0C2IqdG?inline=true"
+    }
+  ],
+  "Services": {
+    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "Why": [
+      "Lorem ipsum dolor",
+      "Tempor incididunt",
+      "Lorem ipsum dolor",
+      "Incididunt ut labore"
+    ],
+    "Why2": [
+      "Aliquip ex ea commodo",
+      "Lorem ipsum dolor",
+      "Exercitation ullamco",
+      "Lorem ipsum dolor"
+    ]
+  },
+  "Contact": {
+    "address": "C5M2+9FX, Jl. Magelang - Purworejo, Dusun VIII, Sidomulyo, Kec. Salaman, Kabupaten Magelang, Jawa Tengah 56162",
+    "phone": "+6285729117699",
+    "email": "usahamandiri@usahamandirimagelang.com",
+    "facebook": "fb.com",
+    "twitter": "twitter.com",
+    "youtube": "youtube.com"
+  },
+  "Features": [ 
+    {
+      "icon": "fa fa-cart-shopping",
+      "title": "Penjualan",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    },
+    {
+      "icon": "fa fa-box",
+      "title": "Pengadaan",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    },
+    {
+      "icon": "fa fa-percent",
+      "title": "Pemesanan",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    },
+    {
+      "icon": "fa fa-seedling",
+      "title": "Lorem ipsum",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    }
+  ]
+}
