@@ -17,7 +17,9 @@ export const Navigation = (props) => {
             <span className="icon-bar"></span>{" "}
             <span className="icon-bar"></span>{" "}
           </button>
-          <a className="navbar-brand page-scroll" href="#home">
+          
+          <a className="navbar-brand page-scroll" href="#home" style={{ display: "flex", alignItems: "center" }}>
+            <img src="logo.svg" alt="Logo" style={{ height: "30px", marginRight: "15px" }} />
             Usaha Mandiri
           </a>{" "}
         </div>
