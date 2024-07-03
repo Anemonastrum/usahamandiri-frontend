@@ -7,26 +7,26 @@
     {
       "icon": "fa fa-cart-shopping",
       "title": "Penjualan",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "text": "Menyediakan berbagai tanaman hias, bibit, buah, dan bunga berkualitas tinggi yang siap dibeli."
     },
     {
       "icon": "fa fa-box",
       "title": "Pengadaan",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "text": "Melayani kebutuhan pengadaan tanaman dan bibit dalam dalam skala kecil hingga besar dengan harga kompetitif."
     },
     {
       "icon": "fa fa-percent",
       "title": "Pemesanan",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "text": "Memungkinkan konsumen memesan tanaman, bibit, buah, dan bunga sesuai kebutuhan dengan sistem yang mudah dan fleksibel."
     },
     {
       "icon": "fa fa-seedling",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "title": "Pembibitan",
+      "text": "Menyediakan layanan perawatan dan pengembangan bibit hingga siap tanam, memastikan bibit sehat dan kuat."
     }
   ],
   "Services": {
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "paragraph": "Toko Usaha Mandiri berkomitmen menyediakan produk berkualitas tinggi seperti bibit buah, tanaman hias, bunga, sayur, dan kayu dengan harga kompetitif. Kami menggunakan aplikasi berbasis web untuk mengelola stok secara real-time, memastikan ketersediaan produk dan pengiriman tepat waktu. Selain itu, kami meningkatkan kapasitas sumber daya manusia melalui pelatihan manajerial dan teknis, serta mengimplementasikan strategi pemasaran digital untuk menjangkau pasar lebih luas. Dengan pengalaman bertahun-tahun dan komitmen terhadap praktik usaha berkelanjutan, Toko Usaha Mandiri siap menjadi mitra agribisnis terpercaya Anda."
   },
   "Gallery": [
     {
@@ -35,34 +35,34 @@
       "smallImage": "https://files.anemona.cloud/api/public/dl/nuccMu4g?inline=true"
     },
     {
-      "title": "Project Title",
+      "title": "Bonsai",
       "largeImage": "https://files.anemona.cloud/api/public/dl/_jXiE1zO?inline=true",
       "smallImage": "https://files.anemona.cloud/api/public/dl/_jXiE1zO?inline=true"
     },
     {
-      "title": "Project Title",
+      "title": "Aglonema",
       "largeImage": "https://files.anemona.cloud/api/public/dl/XaMBo8sr?inline=true",
       "smallImage": "https://files.anemona.cloud/api/public/dl/XaMBo8sr?inline=true"
     },
     {
-      "title": "Project Title",
+      "title": "Anthurium Sirih",
       "largeImage": "https://files.anemona.cloud/api/public/dl/uoHFhXVu?inline=true",
       "smallImage": "https://files.anemona.cloud/api/public/dl/uoHFhXVu?inline=true"
     },
     {
-      "title": "Project Title",
+      "title": "Aglonema",
       "largeImage": "https://files.anemona.cloud/api/public/dl/fkGhiuSa?inline=true",
       "smallImage": "https://files.anemona.cloud/api/public/dl/fkGhiuSa?inline=true"
     },
     {
-      "title": "Project Title",
+      "title": "Pucuk Merah",
       "largeImage": "https://files.anemona.cloud/api/public/dl/-0C2IqdG?inline=true",
       "smallImage": "https://files.anemona.cloud/api/public/dl/-0C2IqdG?inline=true"
     }
   ],
   "About": {
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "paragraph2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "paragraph": "Toko Usaha Mandiri adalah sebuah usaha kecil menengah (UKM) yang berlokasi di Jalan Raya Magelang – Purworejo Km 13, Tempuran Kabupaten Magelang yang sudah berdiri sejak tahun 2015. Kami bergerak di bidang jual beli bibit buah, tanaman hias, bunga, sayur, kayu, dan perlengkapan pertanian. Dengan komitmen kuat untuk menyediakan produk pertanian berkualitas tinggi, kami berupaya untuk memanfaatkan potensi agribisnis lokal yang besar dan mendukung keberlanjutan lingkungan.",
+    "paragraph2": "Selain menawarkan berbagai produk unggulan, kami juga fokus pada pengembangan layanan yang memudahkan pelanggan. Melalui penggunaan teknologi modern, seperti aplikasi berbasis web untuk pengelolaan stok dan logistik, kami memastikan ketersediaan produk secara real-time dan pengiriman tepat waktu. Kami juga terus meningkatkan kapasitas sumber daya manusia melalui pelatihan manajerial dan teknis. Dengan pengalaman yang luas dan dedikasi pada kepuasan pelanggan, Toko Usaha Mandiri siap menjadi mitra terpercaya dalam memenuhi kebutuhan agribisnis Anda."
   },
   "Contact": {
     "address": "C5M2+9FX, Jl. Magelang - Purworejo, Dusun VIII, Sidomulyo, Kec. Salaman, Kabupaten Magelang, Jawa Tengah 56162",
