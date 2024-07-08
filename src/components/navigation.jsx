@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../context/userContext";
 
 export const Navigation = (props) => {
+  
+  const { user } = useContext(UserContext);
+
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -17,9 +21,16 @@ export const Navigation = (props) => {
             <span className="icon-bar"></span>{" "}
             <span className="icon-bar"></span>{" "}
           </button>
-          
-          <a className="navbar-brand page-scroll" href="#home" style={{ display: "flex", alignItems: "center" }}>
-            <img src="logo.svg" alt="Logo" style={{ height: "30px", marginRight: "15px" }} />
+          <a
+            className="navbar-brand page-scroll"
+            href="#home"
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <img
+              src="logo.svg"
+              alt="Logo"
+              style={{ height: "30px", marginRight: "15px" }}
+            />
             Usaha Mandiri
           </a>{" "}
         </div>
@@ -34,16 +45,6 @@ export const Navigation = (props) => {
                 Layanan
               </a>
             </li>
-            {/* <li>
-              <a href="#about" className="page-scroll">
-                About
-              </a>
-            </li> */}
-            {/* <li>
-              <a href="#services" className="page-scroll">
-                Services
-              </a>
-            </li> */}
             <li>
               <a href="#gallery" className="page-scroll">
                 Produk
@@ -54,16 +55,26 @@ export const Navigation = (props) => {
                 About
               </a>
             </li>
-            {/* <li>
-              <a href="#team" className="page-scroll">
-                Team
-              </a>
-            </li> */}
-            <li>
-              <a href="#contact" className="page-scroll">
-                Kontak
-              </a>
-            </li>
+
+            {user && user.username ? (
+              <li>
+                {user.role === "admin" ? (
+                  <a href="/dashboard" className="page-scroll">
+                    Dashboard
+                  </a>
+                ) : (
+                  <a href="/profile" className="page-scroll">
+                    {user.username}
+                  </a>
+                )}
+              </li>
+            ) : (
+              <li>
+                <a href="/auth" className="page-scroll">
+                  Login
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>

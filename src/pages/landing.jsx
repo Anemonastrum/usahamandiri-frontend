@@ -8,6 +8,12 @@ import { Gallery } from "../components/gallery";
 import { Contact } from "../components/contact";
 import JsonData from "../data/data.json";
 import { ThreeDots } from "react-loader-spinner";
+import SmoothScroll from "smooth-scroll";
+
+export const scroll = new SmoothScroll('a[href*="#"]', {
+  speed: 1000,
+  speedAsDuration: true,
+});
 
 const LandingPage = () => {
   const [landingPageData, setLandingPageData] = useState({});

@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/landing.jsx";
 import AuthPage from "./pages/auth.jsx";
-import Login from './pages/login.jsx';
-import Register from './pages/register.jsx';
+import Profile from './pages/profile.jsx';
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
 import { UserContextProvider } from './context/userContext.jsx';
@@ -25,9 +24,8 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
           <Route path="/auth" element={<AuthPage />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </UserContextProvider>

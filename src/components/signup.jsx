@@ -36,7 +36,7 @@ function SignUpForm() {
           phoneNumber: "",
         });
         toast.success("Registration Successful");
-        navigate("/login");
+        navigate("/auth");
       }
     } catch (error) {
       toast.error("An error occurred");
