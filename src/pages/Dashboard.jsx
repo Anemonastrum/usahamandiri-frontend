@@ -1,12 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from "../context/userContext";
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const { user, setUser } = useContext(UserContext);
   const apiUrl = process.env.REACT_APP_API_URL;
+
+  const navigate = useNavigate();
+  
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post("logout");
+      if (response.status === 200) {
+        setUser(null);
+        navigate("/");
+      } else {
+        console.error("Failed to logout");
+      }
+    } catch (error) {
+      console.error("An error occurred during logout", error);
+    }
+  };
 
   useEffect(() => {
     const checkAdminRole = async () => {
@@ -18,13 +36,13 @@ const Dashboard = () => {
         } else {
           setIsAdmin(false);
           // Redirect to login if not admin
-          window.location.href = '/'; 
+          navigate("/");
         }
       } catch (error) {
         console.error('Error checking admin role:', error);
         setIsAdmin(false);
         // Handle error and redirect to login
-        window.location.href = '/'; 
+        navigate("/");
       }
     };
 
@@ -46,6 +64,9 @@ const Dashboard = () => {
           &#9776;
         </div>
         <Link to="/" className="navbar-title">Usaha Mandiri</Link>
+        <button onClick={handleLogout} className="page-scroll">
+        Logout
+      </button>
       </nav>
       <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <ul>
