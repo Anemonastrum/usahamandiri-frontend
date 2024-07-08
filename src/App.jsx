@@ -2,7 +2,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/landing.jsx";
-import AuthPage from './pages/AuthPage.jsx';
+import AuthPage from './pages/auth.jsx';
 import Profile from './pages/profile.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import ProductList from './pages/ProductList.jsx';
@@ -29,10 +29,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path='/auth' element={<AuthPage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/products' element={<ProductList />} />
           <Route path='/categories' element={<CategoryList />} />
-          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </UserContextProvider>
