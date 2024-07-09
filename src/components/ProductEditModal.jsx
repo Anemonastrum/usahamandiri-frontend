@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "react-modal";
-import "../styles/ProductEdit.css";
 import Cookies from 'js-cookie';
 
 const ProductEditModal = ({ productId, onRequestClose }) => {
@@ -21,6 +20,14 @@ const ProductEditModal = ({ productId, onRequestClose }) => {
     fetchProduct();
     fetchCategories();
     fetchProductImage();
+    const productEditCss = document.createElement("link");
+    productEditCss.rel = "stylesheet";
+    productEditCss.href = `http://localhost:3000/css/ProductEdit.css`;
+    document.head.appendChild(productEditCss);
+
+    return () => {
+      document.head.removeChild(productEditCss);
+    };
   }, [productId]);
 
   const fetchProduct = async () => {

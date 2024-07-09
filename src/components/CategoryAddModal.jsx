@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from 'js-cookie';
-import "../styles/CategoryModal.css";
 
 const CategoryAddModal = ({ isOpen, onRequestClose }) => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const apiUrl = process.env.REACT_APP_API_URL;
+
+  useEffect(() => {
+    if (isOpen) {
+      // Load CSS dynamically
+      const categoryModalCss = document.createElement("link");
+      categoryModalCss.rel = "stylesheet";
+      categoryModalCss.href = `http://localhost:3000/css/CategoryModal.css`;
+      document.head.appendChild(categoryModalCss);
+
+      return () => {
+        document.head.removeChild(categoryModalCss);
+      };
+    }
+  }, [isOpen]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

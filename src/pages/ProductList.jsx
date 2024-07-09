@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/ProductList.css";
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import Modal from "react-modal";
 import ProductAddModal from "../components/ProductAddModal";
 import ProductEditModal from "../components/ProductEditModal";
+import { ThreeDots } from "react-loader-spinner";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -21,6 +21,16 @@ const ProductList = () => {
   useEffect(() => {
     getProducts();
     getCategories();
+
+    // Load CSS dynamically
+    const productListCss = document.createElement("link");
+    productListCss.rel = "stylesheet";
+    productListCss.href = `http://localhost:3000/css/ProductList.css`;
+    document.head.appendChild(productListCss);
+
+    return () => {
+      document.head.removeChild(productListCss);
+    };
   }, []);
 
   const getProducts = async () => {
@@ -154,7 +164,9 @@ const ProductList = () => {
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    <div className="loading-container">
+        <ThreeDots color="#4CAF50" height={50} width={50} />
+      </div>
   }
 
   return (

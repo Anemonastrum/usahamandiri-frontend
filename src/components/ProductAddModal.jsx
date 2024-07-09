@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "react-modal";
-import "../styles/ProductAdd.css";
 import Cookies from 'js-cookie';
 
 const ProductAddModal = ({ isOpen, onRequestClose }) => {
@@ -18,6 +17,14 @@ const ProductAddModal = ({ isOpen, onRequestClose }) => {
 
   useEffect(() => {
     fetchCategories();
+    const productAddCss = document.createElement("link");
+    productAddCss.rel = "stylesheet";
+    productAddCss.href = `http://localhost:3000/css/ProductAdd.css`;
+    document.head.appendChild(productAddCss);
+
+    return () => {
+      document.head.removeChild(productAddCss);
+    };
   }, []);
 
   const fetchCategories = async () => {

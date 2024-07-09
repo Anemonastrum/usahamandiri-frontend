@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import Cookies from 'js-cookie';
-import "../styles/CategoryModal.css";
 
 const CategoryEditModal = ({ categoryId, onRequestClose }) => {
   const [name, setName] = useState("");
@@ -11,6 +9,18 @@ const CategoryEditModal = ({ categoryId, onRequestClose }) => {
 
   useEffect(() => {
     fetchCategory();
+  }, []);
+
+  useEffect(() => {
+    // Load CSS dynamically
+    const categoryModalCss = document.createElement("link");
+    categoryModalCss.rel = "stylesheet";
+    categoryModalCss.href = `http://localhost:3000/css/CategoryModal.css`;
+    document.head.appendChild(categoryModalCss);
+
+    return () => {
+      document.head.removeChild(categoryModalCss);
+    };
   }, []);
 
   const fetchCategory = async () => {

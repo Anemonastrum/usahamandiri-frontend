@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from "../context/userContext";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/Dashboard.css';
 
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -47,7 +46,16 @@ const Dashboard = () => {
     };
 
     checkAdminRole();
-  }, []);
+
+    const dashboardCss = document.createElement("link");
+    dashboardCss.rel = "stylesheet";
+    dashboardCss.href = `http://localhost:3000/css/Dashboard.css`; // Ubah ini sesuai path CSS Anda
+    document.head.appendChild(dashboardCss);
+
+    return () => {
+      document.head.removeChild(dashboardCss);
+    };
+  }, [apiUrl, navigate]);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -69,7 +77,7 @@ const Dashboard = () => {
         <ul>
           <li><Link to="/products">Produk</Link></li>
           <li><Link to="/categories">Kategori</Link></li>
-          <li><button onClick={handleLogout} className="page-scroll">Logout</button></li>
+          <li><button onClick={handleLogout}>Logout</button></li>
         </ul>
       </div>
       <div className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>

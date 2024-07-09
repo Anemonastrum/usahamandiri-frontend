@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "../styles/CategoryList.css";
 import Modal from "react-modal";
 import CategoryAddModal from "../components/CategoryAddModal";
 import CategoryEditModal from "../components/CategoryEditModal";
@@ -17,6 +16,16 @@ const CategoryList = () => {
 
   useEffect(() => {
     getCategories();
+
+    // Load CSS dynamically
+    const categoryListCss = document.createElement("link");
+    categoryListCss.rel = "stylesheet";
+    categoryListCss.href = `http://localhost:3000/css/CategoryList.css`;
+    document.head.appendChild(categoryListCss);
+
+    return () => {
+      document.head.removeChild(categoryListCss);
+    };
   }, []);
 
   const getCategories = async () => {
