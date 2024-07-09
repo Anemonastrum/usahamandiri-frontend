@@ -64,15 +64,12 @@ const Dashboard = () => {
           &#9776;
         </div>
         <Link to="/" className="navbar-title">Usaha Mandiri</Link>
-        <button onClick={handleLogout} className="page-scroll">
-        Logout
-      </button>
       </nav>
       <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <ul>
           <li><Link to="/products">Produk</Link></li>
           <li><Link to="/categories">Kategori</Link></li>
-          <li>Submenu 2</li>
+          <li><button onClick={handleLogout} className="page-scroll">Logout</button></li>
         </ul>
       </div>
       <div className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>

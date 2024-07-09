@@ -45,7 +45,7 @@ const ProductEditModal = ({ productId, onRequestClose }) => {
 
   const fetchProductImage = async () => {
     try {
-      const imageResponse = await axios.get(`${apiUrl}/productimages?product_id=${productId}`);
+      const imageResponse = await axios.get(`${apiUrl}/productimages/product/${productId}`);
       const productImages = imageResponse.data;
 
       if (productImages.length > 0 && productImages[0].url) {

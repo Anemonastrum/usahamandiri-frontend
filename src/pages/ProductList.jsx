@@ -13,10 +13,14 @@ const ProductList = () => {
   const [addModalIsOpen, setAddModalIsOpen] = useState(false);
   const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [sortOption, setSortOption] = useState('');
+  const [filterCategory, setFilterCategory] = useState('');
+  const [categories, setCategories] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     getProducts();
+    getCategories();
   }, []);
 
   const getProducts = async () => {
@@ -45,6 +49,15 @@ const ProductList = () => {
       setLoading(false);
     } catch (error) {
       console.error("There was an error fetching the products!", error);
+    }
+  };
+
+  const getCategories = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}/categories`);
+      setCategories(response.data);
+    } catch (error) {
+      console.error("There was an error fetching the categories!", error);
     }
   };
 
@@ -103,6 +116,33 @@ const ProductList = () => {
     }
   };
 
+  const handleSort = (option) => {
+    setSortOption(option);
+    let sortedProducts = [...products];
+    switch (option) {
+      case 'alphabetical':
+        sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'stock':
+        sortedProducts.sort((a, b) => b.stock - a.stock);
+        break;
+      case 'price':
+        sortedProducts.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        break;
+    }
+    setProducts(sortedProducts);
+  };
+
+  const handleFilterCategory = (category) => {
+    setFilterCategory(category);
+  };
+
+  const filteredProducts = filterCategory
+    ? products.filter(product => product.categoryName === filterCategory)
+    : products;
+
   const handleProductAdded = () => {
     refreshProducts();
     setAddModalIsOpen(false);
@@ -120,21 +160,41 @@ const ProductList = () => {
   return (
     <div className="product-list-container">
       <h1>Product List</h1>
-      <button type="submit" className="edit-button" onClick={() => setAddModalIsOpen(true)}>Tambah Product</button>
+      <div className="sort-filter-controls">
+        <div className="sort-options">
+          <select onChange={(e) => handleSort(e.target.value)}>
+            <option value="">Urutkan Berdasarkan</option>
+            <option value="alphabetical">Alfabet</option>
+            <option value="stock">Stock</option>
+            <option value="price">Harga</option>
+          </select>
+        </div>
+        <div className="filter-options">
+          <select onChange={(e) => handleFilterCategory(e.target.value)}>
+            <option value="">Semua Kategori</option>
+            {categories.map(category => (
+              <option key={category._id} value={category.name}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <button type="submit" className="edit-button" onClick={() => setAddModalIsOpen(true)}>Tambah Produk</button>
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
+            <th>Nama</th>
+            <th>Deskripsi</th>
+            <th>Harga</th>
             <th>Stock</th>
-            <th>Category</th>
+            <th>Kategori</th>
             <th>Image</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <tr key={product._id}>
               <td>{product.name}</td>
               <td>{product.description}</td>

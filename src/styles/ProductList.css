@@ -1,3 +1,7 @@
+body {
+  font-family: "Helvetica Neue", sans-serif;
+}
+
 .product-list-container {
   padding: 2rem;
 }
@@ -48,4 +52,28 @@ button:hover {
   height: 100px; /* Atur tinggi thumbnail */
   object-fit: cover; /* Memastikan gambar menyesuaikan dalam kotak dengan memotong bagian luar */
   border-radius: 5px; /* Menambahkan sedikit border radius untuk tampilan yang lebih bagus */
+}
+
+.sort-filter-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.sort-options, .filter-options {
+  display: flex;
+}
+
+.sort-options select, .filter-options select {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  color: white;
+  background-color: #4caf50;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sort-options select:hover, .filter-options select:hover {
+  background-color: #45a049;
 }
