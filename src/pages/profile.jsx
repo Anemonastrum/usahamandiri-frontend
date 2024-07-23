@@ -19,6 +19,7 @@ export default function Profile() {
   const [isUser, setIsUser] = useState(false);
 
   const apiUrl = process.env.REACT_APP_API_URL;
+  const assetUrl = process.env.REACT_APP_ASSET_URL;
 
   useEffect(() => {
 
@@ -57,7 +58,7 @@ export default function Profile() {
 
     const profileCss = document.createElement("link");
     profileCss.rel = "stylesheet";
-    profileCss.href = `http://localhost:3000/css/profile.css`;
+    profileCss.href = `${assetUrl}/css/profile.css`;
     document.head.appendChild(profileCss);
 
     const bsCss = document.createElement("link");
@@ -77,7 +78,7 @@ export default function Profile() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post("http://localhost:8000/api/logout");
+      const response = await axios.post(`${apiUrl}/logout`);
       if (response.status === 200) {
         setUser(null);
         navigate("/");
@@ -100,7 +101,7 @@ export default function Profile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put("http://localhost:8000/api/update", formData, { withCredentials: true });
+      const response = await axios.put(`${apiUrl}/api/update`, formData, { withCredentials: true });
       if (response.status === 200) {
         setUser(prev => ({ ...prev, ...formData, number: formData.phoneNumber }));
         alert("Profile updated successfully!");

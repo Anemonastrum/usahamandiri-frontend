@@ -25,6 +25,7 @@ const Dashboard = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   const apiUrl = process.env.REACT_APP_API_URL;
+  const assetUrl = process.env.REACT_APP_ASSET_URL;
 
   const navigate = useNavigate();
 
@@ -56,7 +57,7 @@ const Dashboard = () => {
 
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/products");
+        const response = await axios.get(`${apiUrl}/products`);
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -65,7 +66,7 @@ const Dashboard = () => {
 
     const fetchProductImages = async () => {
         try {
-          const response = await axios.get("http://localhost:8000/api/productImages");
+          const response = await axios.get(`${apiUrl}/productImages`);
           setProductImages(response.data);
         } catch (error) {
           console.error("Error fetching productImages:", error);
@@ -74,7 +75,7 @@ const Dashboard = () => {
 
     const fetchCategory = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/categories");
+        const response = await axios.get(`${apiUrl}/categories`);
         setCategories(response.data);
       } catch (error) {
         console.error("Error fetching category:", error);
@@ -83,7 +84,7 @@ const Dashboard = () => {
 
     const fetchUserAdmin = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/alluseradmin");
+        const response = await axios.get(`${apiUrl}/alluseradmin`);
         setUserAdmin(response.data);
       } catch (error) {
         console.error("Error fetching users and admin:", error);
@@ -106,7 +107,7 @@ const Dashboard = () => {
 
     const dashboardCss = document.createElement("link");
     dashboardCss.rel = "stylesheet";
-    dashboardCss.href = `http://localhost:3000/css/db.css`;
+    dashboardCss.href = `${assetUrl}/css/db.css`;
     document.head.appendChild(dashboardCss);
 
     return () => {

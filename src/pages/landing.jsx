@@ -18,6 +18,7 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 const LandingPage = () => {
   const [landingPageData, setLandingPageData] = useState({});
   const [loading, setLoading] = useState(true);
+  const assetUrl = process.env.REACT_APP_ASSET_URL;
 
   useEffect(() => {
 
@@ -28,31 +29,31 @@ const LandingPage = () => {
 
     const bsCss = document.createElement("link");
     bsCss.rel = "stylesheet";
-    bsCss.href = `http://localhost:3000/css/bootstrap.css`;
+    bsCss.href = `${assetUrl}/css/bootstrap.css`;
     document.head.appendChild(bsCss);
 
     const landingCss = document.createElement("link");
     landingCss.rel = "stylesheet";
-    landingCss.href = `http://localhost:3000/css/landing.css`;
+    landingCss.href = `${assetUrl}/css/landing.css`;
     document.head.appendChild(landingCss);
 
     const nvCss = document.createElement("link");
     nvCss.rel = "stylesheet";
-    nvCss.href = `http://localhost:3000/css/nivo-lightbox/nivo-lightbox.css`;
+    nvCss.href = `${assetUrl}/css/nivo-lightbox/nivo-lightbox.css`;
     document.head.appendChild(nvCss);
 
     const nvCss2 = document.createElement("link");
     nvCss2.rel = "stylesheet";
-    nvCss2.href = `http://localhost:3000/css/nivo-lightbox/default.css`;
+    nvCss2.href = `${assetUrl}/css/nivo-lightbox/default.css`;
     document.head.appendChild(nvCss2);
 
     // const jqScript = document.createElement("script");
-    // jqScript.src = `http://localhost:3000/js/jquery.1.11.1.js`;
+    // jqScript.src = `${assetUrl}/js/jquery.1.11.1.js`;
     // jqScript.async = true;
     // document.body.appendChild(jqScript);
 
     // const bsScript = document.createElement("script");
-    // bsScript.src = `http://localhost:3000/js/bootstrap.js`;
+    // bsScript.src = `${assetUrl}/js/bootstrap.js`;
     // bsScript.async = true;
     // document.body.appendChild(bsScript);
 
