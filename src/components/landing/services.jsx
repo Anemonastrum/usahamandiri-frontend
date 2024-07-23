@@ -9,7 +9,7 @@ export const Services = (props) => {
         <div className="row">
           <div className="col-xs-12 col-md-6">
             {" "}
-            <img src="https://files.anemona.cloud/api/public/dl/pVJ6STC0?inline=true" className="img-responsive" alt="" />{" "}
+            <img src="https://cdn.usahamandirimagelang.com/foto/6.webp" className="img-responsive" alt="" />{" "}
           </div>
           <div className="col-xs-12 col-md-6">
             <div className="about-text">

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/userContext";
 
 function SignInForm() {
     const navigate = useNavigate();
+    const { setUser } = useContext(UserContext);
     const [data, setData] = useState({
       login: "",
       password: "",
@@ -23,6 +25,7 @@ function SignInForm() {
           toast.error(data.error);
         } else {
           setData({});
+          setUser(data.user); 
           if (data.role === "admin") {
             navigate("/dashboard");
           } else {

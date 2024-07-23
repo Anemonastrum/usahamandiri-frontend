@@ -8,7 +8,7 @@
   }
   
   body {
-    background: url(https://files.anemona.cloud/api/public/dl/A2PZiOu4?inline=true) center center no-repeat;
+    background: url(https://cdn.usahamandirimagelang.com/images/10x.png) center center no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,6 +103,7 @@
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
+    border-radius: 5px;
   }
   
   .container {

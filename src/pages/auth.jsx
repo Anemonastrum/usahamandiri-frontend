@@ -1,5 +1,5 @@
-import SignInForm from "../components/signin";
-import SignUpForm from "../components/signup";
+import SignInForm from "../components/auth/signin";
+import SignUpForm from "../components/auth/signup";
 import React, { useState, useEffect } from "react";
 import { ThreeDots } from "react-loader-spinner";
 

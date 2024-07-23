@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Navigation } from "../components/navigation";
-import { Header } from "../components/header";
-import { Features } from "../components/features";
-import { About } from "../components/about";
-import { Services } from "../components/services";
-import { Gallery } from "../components/gallery";
-import { Contact } from "../components/contact";
+import { Navigation } from "../components/landing/navigation";
+import { Header } from "../components/landing/header";
+import { Features } from "../components/landing/features";
+import { About } from "../components/landing/about";
+import { Services } from "../components/landing/services";
+import { Gallery } from "../components/landing/gallery";
+import { Contact } from "../components/landing/contact";
 import JsonData from "../data/data.json";
 import { ThreeDots } from "react-loader-spinner";
 import SmoothScroll from "smooth-scroll";
