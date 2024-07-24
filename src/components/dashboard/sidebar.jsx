@@ -6,6 +6,7 @@ import axios from "axios";
 const Sidebar = ({ isCollapsed, user, setUser }) => {
 
   const navigate = useNavigate();
+  const assetUrl = process.env.REACT_APP_ASSET_URL;
 
   const handleLogout = async () => {
     try {
@@ -33,7 +34,7 @@ const Sidebar = ({ isCollapsed, user, setUser }) => {
           href="#profileModal"
         >
           <img
-            src="http://cdn.usahamandirimagelang.com/rds.heic"
+            src={`${assetUrl}/rds.heic`}
             className="img-fluid"
             alt="Profile Picture"
             style={{ borderRadius: "100px", border: "0.5px solid #d9d9d9" }}
@@ -70,6 +71,13 @@ const Sidebar = ({ isCollapsed, user, setUser }) => {
           activeClassName="active"
         >
           <i className="fas fa-user fa-fw me-4"></i>Pengguna
+        </NavLink>
+        <NavLink
+          to="/dashboard/page5"
+          className="list-group-item list-group-item-action sidebar-item"
+          activeClassName="active"
+        >
+          <i className="fas fa-info-circle fa-fw me-4"></i>Informasi
         </NavLink>
         <button
           onClick={handleLogout}

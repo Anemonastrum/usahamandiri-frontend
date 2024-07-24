@@ -6,6 +6,7 @@ import axios from "axios";
 const Header = ({ toggleSidebar, user, setUser }) => {
 
     const navigate = useNavigate();
+    const assetUrl = process.env.REACT_APP_ASSET_URL;
 
     const handleLogout = async () => {
         try {
@@ -33,14 +34,14 @@ const Header = ({ toggleSidebar, user, setUser }) => {
             onClick={toggleSidebar}
           >
             <img
-              src="http://cdn.usahamandirimagelang.com/icons/list.svg"
+              src={`${assetUrl}/icons/list.svg`}
               alt="Menu"
               style={{ width: "25px" }}
             />
           </button>
           <div className="logo">
             <img
-              src="http://cdn.usahamandirimagelang.com/logo.svg"
+              src={`${assetUrl}/logo.svg`}
               alt="Header Logo"
               className="logo-img"
             />

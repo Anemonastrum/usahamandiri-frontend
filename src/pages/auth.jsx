@@ -12,6 +12,7 @@ export default function Auth() {
     }
   };
 
+  const assetUrl = process.env.REACT_APP_ASSET_URL;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function Auth() {
 
     const authCss = document.createElement("link");
     authCss.rel = "stylesheet";
-    authCss.href = `http://localhost:3000/css/auth.css`;
+    authCss.href = `${assetUrl}/css/auth.css`;
     document.head.appendChild(authCss);
 
     return () => {

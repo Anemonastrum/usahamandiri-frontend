@@ -11,8 +11,10 @@ import { Toaster } from 'react-hot-toast'
 import axios from 'axios'
 import Dashboard from './pages/dashboard/dashboard.jsx';
 
-axios.defaults.baseURL = 'http://localhost:8000/api/'
+const apiUrl = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = `${apiUrl}`
 axios.defaults.withCredentials = true
+
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,

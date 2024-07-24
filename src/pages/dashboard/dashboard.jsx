@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Header from "../../components/dashboard/header";
 import Sidebar from "../../components/dashboard/sidebar";
 import Footer from "../../components/dashboard/footer";
@@ -7,10 +7,13 @@ import Page1 from "./page1";
 import Page2 from "./page2";
 import Page3 from "./page3";
 import Page4 from "./page4";
+import Page5 from "./page5";
 import { RotatingLines } from "react-loader-spinner";
 import ProfileModal from "../../components/dashboard/profileModal";
 import { UserContext } from "../../context/userContext";
+import ProtectedRoute from "../../components/protectedRoute";
 import axios from "axios";
+
 
 const Dashboard = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -21,12 +24,10 @@ const Dashboard = () => {
   const [productImages, setProductImages] = useState([]);
   const [categories, setCategories] = useState([]);
   const [userAdmin, setUserAdmin] = useState([]);
-
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [information, setInformation] = useState([]); // State for storing information
 
   const apiUrl = process.env.REACT_APP_API_URL;
-
-  const navigate = useNavigate();
+  const assetUrl = process.env.REACT_APP_ASSET_URL;
 
   
   const toggleSidebar = () => {
@@ -34,29 +35,9 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-
-    const checkAdminRole = async () => {
-      try {
-        const response = await axios.get(`${apiUrl}/profile`);
-        const { role } = response.data;
-        if (role === 'admin') {
-          setIsAdmin(true);
-        } else {
-          setIsAdmin(false);
-          navigate("/");
-        }
-      } catch (error) {
-        console.error('Error checking admin role:', error);
-        setIsAdmin(false);
-        navigate("/");
-      }
-    };
-
-    checkAdminRole();
-
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/products");
+        const response = await axios.get(`${apiUrl}/products`);
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -65,7 +46,7 @@ const Dashboard = () => {
 
     const fetchProductImages = async () => {
         try {
-          const response = await axios.get("http://localhost:8000/api/productImages");
+          const response = await axios.get(`${apiUrl}/productImages`);
           setProductImages(response.data);
         } catch (error) {
           console.error("Error fetching productImages:", error);
@@ -74,7 +55,7 @@ const Dashboard = () => {
 
     const fetchCategory = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/categories");
+        const response = await axios.get(`${apiUrl}/categories`);
         setCategories(response.data);
       } catch (error) {
         console.error("Error fetching category:", error);
@@ -83,10 +64,19 @@ const Dashboard = () => {
 
     const fetchUserAdmin = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/alluseradmin");
+        const response = await axios.get(`${apiUrl}/alluseradmin`);
         setUserAdmin(response.data);
       } catch (error) {
         console.error("Error fetching users and admin:", error);
+      }
+    };
+
+    const fetchInformation = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/information`);
+        setInformation(response.data);
+      } catch (error) {
+        console.error("Error fetching information:", error);
       }
     };
 
@@ -94,6 +84,7 @@ const Dashboard = () => {
     fetchProducts();
     fetchProductImages();
     fetchUserAdmin();
+    fetchInformation();
 
     setTimeout(() => {
       setLoading(false);
@@ -106,7 +97,7 @@ const Dashboard = () => {
 
     const dashboardCss = document.createElement("link");
     dashboardCss.rel = "stylesheet";
-    dashboardCss.href = `http://localhost:3000/css/db.css`;
+    dashboardCss.href = `${assetUrl}/css/db.css`;
     document.head.appendChild(dashboardCss);
 
     return () => {
@@ -144,10 +135,46 @@ const Dashboard = () => {
           >
             <div className="container-fluid">
             <Routes>
-                <Route path="/page1" element={<Page1 user={user} setUser={setUser} products={products} categories={categories} />} />
-                <Route path="/page2" element={<Page2 user={user} setUser={setUser} categories={categories} products={products} />} />
-                <Route path="/page3" element={<Page3 user={user} setUser={setUser} products={products} productImages={productImages} categories={categories}/>} />
-                <Route path="/page4" element={<Page4 userAdmin={userAdmin} />} />
+                <Route 
+                  path="/page1" 
+                  element={
+                    <ProtectedRoute role="admin">
+                      <Page1 user={user} setUser={setUser} products={products} categories={categories} />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/page2" 
+                  element={
+                    <ProtectedRoute role="admin">
+                      <Page2 user={user} setUser={setUser} categories={categories} products={products} />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/page3" 
+                  element={
+                    <ProtectedRoute role="admin">
+                      <Page3 user={user} setUser={setUser} products={products} productImages={productImages} categories={categories} />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/page4" 
+                  element={
+                    <ProtectedRoute role="admin">
+                      <Page4 userAdmin={userAdmin} />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/page5" 
+                  element={
+                    <ProtectedRoute role="admin">
+                      <Page5 information={information} />
+                    </ProtectedRoute>
+                  } 
+                />
                 <Route path="/" element={<Navigate to="/dashboard/page1" />} />
               </Routes>
             </div>
@@ -155,7 +182,7 @@ const Dashboard = () => {
           </div>
         </div>
       )}
-       <ProfileModal />
+      <ProfileModal />
     </div>
   );
 };

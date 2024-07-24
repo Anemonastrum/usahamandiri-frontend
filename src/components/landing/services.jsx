@@ -1,6 +1,9 @@
 import React from "react";
 
 export const Services = (props) => {
+
+  const assetUrl = process.env.REACT_APP_ASSET_URL;
+
   return (
     <div id="services" className="text-center">
       <div className="container">
@@ -9,7 +12,7 @@ export const Services = (props) => {
         <div className="row">
           <div className="col-xs-12 col-md-6">
             {" "}
-            <img src="https://cdn.usahamandirimagelang.com/foto/6.webp" className="img-responsive" alt="" />{" "}
+            <img src={`${assetUrl}/foto/6.webp`} className="img-responsive" alt="" />{" "}
           </div>
           <div className="col-xs-12 col-md-6">
             <div className="about-text">
