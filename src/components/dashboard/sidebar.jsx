@@ -72,6 +72,13 @@ const Sidebar = ({ isCollapsed, user, setUser }) => {
         >
           <i className="fas fa-user fa-fw me-4"></i>Pengguna
         </NavLink>
+        <NavLink
+          to="/dashboard/page5"
+          className="list-group-item list-group-item-action sidebar-item"
+          activeClassName="active"
+        >
+          <i className="fas fa-info-circle fa-fw me-4"></i>Informasi
+        </NavLink>
         <button
           onClick={handleLogout}
           className="list-group-item list-group-item-action sidebar-item"

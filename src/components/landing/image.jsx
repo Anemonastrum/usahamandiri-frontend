@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
-export const Image = ({ title, largeImage, smallImage }) => {
+export const Image = ({ title, largeImage, smallImage, phoneNumber }) => {
+  const [linkUrl, setLinkUrl] = useState(largeImage);
+
+  // Handle mouse enter to change link to WhatsApp
+  const handleMouseEnter = () => {
+    setLinkUrl(
+      `https://wa.me/${phoneNumber}?text=Halo, saya berminat untuk menanyakan tentang ketersediaan produk ${title} dari website usahamandirimagelang.com.`
+    );
+  };
+
+  // Handle mouse leave to revert link back to the image URL
+  const handleMouseLeave = () => {
+    setLinkUrl(largeImage);
+  };
+
   return (
     <div className="portfolio-item">
       <div className="hover-bg">
         {" "}
-        <a href={largeImage} title={title} data-lightbox-gallery="gallery1">
+        <a
+          href={linkUrl}
+          title={title}
+          data-lightbox-gallery="gallery1"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className="hover-text">
             <h4>{title}</h4>
           </div>

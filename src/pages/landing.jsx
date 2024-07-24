@@ -9,6 +9,7 @@ import { Contact } from "../components/landing/contact";
 import JsonData from "../data/data.json";
 import { ThreeDots } from "react-loader-spinner";
 import SmoothScroll from "smooth-scroll";
+import axios from "axios";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -18,7 +19,9 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 const LandingPage = () => {
   const [landingPageData, setLandingPageData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [phoneNumber, setPhoneNumber] = useState("");
   const assetUrl = process.env.REACT_APP_ASSET_URL;
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
 
@@ -26,6 +29,18 @@ const LandingPage = () => {
       setLandingPageData(JsonData);
       setLoading(false);
     }, 2000);
+
+    const fetchPhoneNumber = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/information`);
+        const info = response.data[0]; // Assuming the first entry contains the information you need
+        setPhoneNumber(info.whatsapp); // Adjust to match the structure of your response
+      } catch (error) {
+        console.error("Error fetching phone number:", error);
+      }
+    };
+
+    fetchPhoneNumber();
 
     const bsCss = document.createElement("link");
     bsCss.rel = "stylesheet";
@@ -88,7 +103,7 @@ const LandingPage = () => {
           <Header data={landingPageData.Header} />
           <Features data={landingPageData.Features} />
           <Services data={landingPageData.Services} />
-          <Gallery data={landingPageData.Gallery} />
+          <Gallery data={landingPageData.Gallery} phoneNumber={phoneNumber} />
           <About data={landingPageData.About} />
           <Contact data={landingPageData.Contact} />
         </>
