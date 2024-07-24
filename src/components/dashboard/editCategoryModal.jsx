@@ -30,6 +30,8 @@ const EditCategoryModal = ({ category, isOpen, onRequestClose, onCategoryUpdated
         }
       );
 
+      console.log(response);
+
       toast.success("Category updated successfully!");
       setTimeout(() => {
         onCategoryUpdated();

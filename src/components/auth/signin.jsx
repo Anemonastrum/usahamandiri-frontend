@@ -43,13 +43,13 @@ function SignInForm() {
       <form onSubmit={loginUser}>
         <h1>Sign in</h1>
         <div className="social-container">
-          <a href="#" className="social">
+          <a href="javascript:void(0)" className="social">
             <i className="fa fa-seedling" />
           </a>
-          <a href="#" className="social">
+          <a href="javascript:void(0)" className="social">
             <i className="fa fa-solid fa-leaf" />
           </a>
-          <a href="#" className="social">
+          <a href="javascript:void(0)" className="social">
             <i className="fa fa-solid fa-lemon" />
           </a>
         </div>

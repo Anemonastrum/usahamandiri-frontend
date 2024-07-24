@@ -28,7 +28,7 @@ export default function Auth() {
     return () => {
       document.head.removeChild(authCss);
     };
-  }, []);
+  }, [assetUrl]);
 
   const containerClass =
     "container " + (type === "signUp" ? "right-panel-active" : "");

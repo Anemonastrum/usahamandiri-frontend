@@ -16,13 +16,12 @@ export default function Profile() {
   });
   const [error, setError] = useState(null);
 
-  const [isUser, setIsUser] = useState(false);
+  const [setIsUser] = useState(false);
 
   const apiUrl = process.env.REACT_APP_API_URL;
   const assetUrl = process.env.REACT_APP_ASSET_URL;
 
   useEffect(() => {
-
     const checkUserRole = async () => {
       try {
         const response = await axios.get(`${apiUrl}/profile`);
@@ -34,7 +33,7 @@ export default function Profile() {
           navigate("/");
         }
       } catch (error) {
-        console.error('Error checking admin role:', error);
+        console.error('Error checking user role:', error);
         setIsUser(false);
         navigate("/");
       }
@@ -74,7 +73,7 @@ export default function Profile() {
         document.head.removeChild(profileCss);
       }
     };
-  }, [user]);
+  }, [user, apiUrl, assetUrl, navigate, setIsUser]);
 
   const handleLogout = async () => {
     try {

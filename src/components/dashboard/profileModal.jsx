@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 
 const ProfileModal = () => {
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const assetUrl = process.env.REACT_APP_ASSET_URL;
 
     return (
@@ -15,7 +15,7 @@ const ProfileModal = () => {
                     </div>
                     <div className="modal-body">
                         <div className="p-3 profile">
-                            <img src={`${assetUrl}/rds.heic`} className="img-fluid w-75" alt="Profile Picture" style={{ borderRadius: '1000px', border: '0.5px solid #d9d9d9' }} />
+                            <img src={`${assetUrl}/admin.webp`} className="img-fluid w-75" alt="admim guys" style={{ borderRadius: '1000px', border: '0.5px solid #d9d9d9' }} />
                             <div className="form-group p-2 my-2">
                                 <div className="input-group py-2">
                                     <span className="input-group-text"><i className="fas fa-user"></i></span>

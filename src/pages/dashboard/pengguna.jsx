@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Page4 = ({ userAdmin }) => {
+const Pengguna = ({ userAdmin }) => {
   const { users, admins } = userAdmin;
 
   const [currentPageUsers, setCurrentPageUsers] = useState(1);
@@ -165,4 +165,4 @@ const Page4 = ({ userAdmin }) => {
   );
 };
 
-export default Page4;
+export default Pengguna;

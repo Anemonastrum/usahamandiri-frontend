@@ -3,7 +3,7 @@ import EditCategoryModal from "../../components/dashboard/editCategoryModal";
 import DeleteCategoryModal from "../../components/dashboard/deleteCategoryModal";
 import AddCategoryModal from "../../components/dashboard/addCategoryModal";
 
-const Page2 = ({ categories, products }) => {
+const Kategori = ({ categories, products }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [categoriesPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState("");
@@ -294,4 +294,4 @@ const Page2 = ({ categories, products }) => {
   );
 };
 
-export default Page2;
+export default Kategori;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import EditInformationModal from "../../components/dashboard/editInformationModal";
 
-const Page5 = ({ information }) => {
+const Informasi = ({ information }) => {
   const [selectedInformation, setSelectedInformation] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
 
@@ -76,4 +76,4 @@ const Page5 = ({ information }) => {
   );
 };
 
-export default Page5;
+export default Informasi;

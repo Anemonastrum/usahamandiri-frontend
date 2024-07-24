@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AddProductModal from "../../components/dashboard/addProductModal";
 import EditProductModal from "../../components/dashboard/editProductModal";
 import DeleteProductModal from "../../components/dashboard/deleteProductModal";
 
-function Page3({ products, productImages, categories }) {
+function Produk({ products, productImages, categories }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState("");
@@ -361,4 +361,4 @@ function Page3({ products, productImages, categories }) {
   );
 }
 
-export default Page3;
+export default Produk;

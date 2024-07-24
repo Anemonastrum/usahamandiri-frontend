@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Page1({ user, products, categories }) {
+function Home({ user, products, categories }) {
     const totalProducts = products.length;
     const latestProducts = products.slice(-3);
     const totalCategories = categories.length;
@@ -129,4 +129,4 @@ function Page1({ user, products, categories }) {
     );
 }
 
-export default Page1;
+export default Home;

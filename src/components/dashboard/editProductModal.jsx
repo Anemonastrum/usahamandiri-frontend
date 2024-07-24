@@ -20,6 +20,19 @@ const ProductEditModal = ({
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
+    const fetchProductImage = async () => {
+      try {
+        const response = await axios.get(
+          `${apiUrl}/productImages/product/${product._id}`
+        );
+        if (response.data.length > 0) {
+          setImageUrl(response.data[0].url);
+          setImageId(response.data[0]._id); // Set image ID
+        }
+      } catch (error) {
+        console.error("Error fetching product image:", error);
+      }
+    };
     if (product) {
       setName(product.name);
       setDescription(product.description);
@@ -28,21 +41,7 @@ const ProductEditModal = ({
       setCategoryId(product.category_id);
       fetchProductImage();
     }
-  }, [product]);
-
-  const fetchProductImage = async () => {
-    try {
-      const response = await axios.get(
-        `${apiUrl}/productImages/product/${product._id}`
-      );
-      if (response.data.length > 0) {
-        setImageUrl(response.data[0].url);
-        setImageId(response.data[0]._id); // Set image ID
-      }
-    } catch (error) {
-      console.error("Error fetching product image:", error);
-    }
-  };
+  }, [product, apiUrl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,7 +99,7 @@ const ProductEditModal = ({
         tabIndex="-1"
         aria-labelledby="editProductModalLabel"
         aria-hidden={!isOpen}
-        style={{ display: 'block' }}
+        style={{ display: "block" }}
         onClick={(e) => e.target === e.currentTarget && onRequestClose()}
       >
         <div className="modal-dialog">

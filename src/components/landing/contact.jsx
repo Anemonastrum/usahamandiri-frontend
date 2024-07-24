@@ -1,5 +1,5 @@
-import { useState } from "react";
-import emailjs from "emailjs-com";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import React from "react";
 
 const initialState = {
@@ -7,34 +7,53 @@ const initialState = {
   email: "",
   message: "",
 };
+
 export const Contact = (props) => {
   const [{ name, email, message }, setState] = useState(initialState);
+  const [contactInfo, setContactInfo] = useState({});
+
+  const apiUrl = process.env.REACT_APP_API_URL;
+
+  useEffect(() => {
+    const fetchInformation = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/information`);
+        if (response.data.length > 0) {
+          setContactInfo(response.data[0]);
+        }
+      } catch (error) {
+        console.error("Error fetching information:", error);
+      }
+    };
+
+    fetchInformation();
+  }, [apiUrl]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
+
   const clearState = () => setState({ ...initialState });
-  
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, message);
-    
-    {/* replace below with your own Service ID, Template ID and Public Key from your EmailJS account */ }
-    
-    emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_PUBLIC_KEY")
-      .then(
-        (result) => {
-          console.log(result.text);
-          clearState();
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+
+    if (contactInfo.whatsapp) {
+      // Format the message for WhatsApp
+      const messageText = `Nama: ${name} Email: ${email} Message: ${message}`;
+      // Create WhatsApp URL
+      const whatsappUrl = `https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(messageText)}`;
+
+      // Open WhatsApp
+      window.open(whatsappUrl, "_blank");
+      
+      clearState();
+    } else {
+      console.error("WhatsApp number not available");
+    }
   };
+
   return (
     <div>
       <div id="contact">
@@ -104,7 +123,7 @@ export const Contact = (props) => {
                 <span>
                   <i className="fa fa-map-marker"></i> Alamat
                 </span>
-                {props.data ? props.data.address : "loading"}
+                {contactInfo.alamat || "loading"}
               </p>
             </div>
             <div className="contact-item">
@@ -112,7 +131,7 @@ export const Contact = (props) => {
                 <span>
                   <i className="fa fa-phone"></i> Nomor Telepon
                 </span>{" "}
-                {props.data ? props.data.phone : "loading"}
+                {contactInfo.whatsapp || "loading"}
               </p>
             </div>
             <div className="contact-item">
@@ -120,33 +139,10 @@ export const Contact = (props) => {
                 <span>
                   <i className="fa fa-envelope"></i> Email
                 </span>{" "}
-                {props.data ? props.data.email : "loading"}
+                {contactInfo.email || "loading"}
               </p>
             </div>
           </div>
-          {/* <div className="col-md-12">
-            <div className="row">
-              <div className="social">
-                <ul>
-                  <li>
-                    <a href={props.data ? props.data.facebook : "/"}>
-                      <i className="fa fa-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.twitter : "/"}>
-                      <i className="fa fa-twitter"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.youtube : "/"}>
-                      <i className="fa fa-youtube"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
       <div id="footer">

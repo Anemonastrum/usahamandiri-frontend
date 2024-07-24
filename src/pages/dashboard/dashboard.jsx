@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Header from "../../components/dashboard/header";
 import Sidebar from "../../components/dashboard/sidebar";
 import Footer from "../../components/dashboard/footer";
-import Page1 from "./page1";
-import Page2 from "./page2";
-import Page3 from "./page3";
-import Page4 from "./page4";
-import Page5 from "./page5";
+import Home from "./home";
+import Kategori from "./kategori";
+import Produk from "./produk";
+import Pengguna from "./pengguna";
+import Informasi from "./informasi";
 import { RotatingLines } from "react-loader-spinner";
 import ProfileModal from "../../components/dashboard/profileModal";
 import { UserContext } from "../../context/userContext";
 import ProtectedRoute from "../../components/protectedRoute";
 import axios from "axios";
-
 
 const Dashboard = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -24,12 +24,11 @@ const Dashboard = () => {
   const [productImages, setProductImages] = useState([]);
   const [categories, setCategories] = useState([]);
   const [userAdmin, setUserAdmin] = useState([]);
-  const [information, setInformation] = useState([]); // State for storing information
+  const [information, setInformation] = useState([]);
 
   const apiUrl = process.env.REACT_APP_API_URL;
   const assetUrl = process.env.REACT_APP_ASSET_URL;
 
-  
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -89,29 +88,16 @@ const Dashboard = () => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-
-    const bsCss = document.createElement("link");
-    bsCss.rel = "stylesheet";
-    bsCss.href = `https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css`;
-    document.head.appendChild(bsCss);
-
-    const dashboardCss = document.createElement("link");
-    dashboardCss.rel = "stylesheet";
-    dashboardCss.href = `${assetUrl}/css/db.css`;
-    document.head.appendChild(dashboardCss);
-
-    return () => {
-        if (document.head.contains(bsCss)) {
-            document.head.removeChild(bsCss);
-        }
-        if (document.head.contains(dashboardCss)) {
-            document.head.removeChild(dashboardCss);
-        }
-    };
-  }, []);
+  }, [apiUrl]);
 
   return (
     <div>
+      <Helmet>
+        <link rel="stylesheet" href={`https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css`} />
+        <link rel="stylesheet" href={`${assetUrl}/css/db.css`} />
+        <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js' async></script>
+        <script src='https://code.jquery.com/jquery-3.7.0.min.js' async></script>
+      </Helmet>
       {loading ? (
         <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
           <RotatingLines
@@ -134,48 +120,48 @@ const Dashboard = () => {
             }`}
           >
             <div className="container-fluid">
-            <Routes>
+              <Routes>
                 <Route 
-                  path="/page1" 
+                  path="/home" 
                   element={
                     <ProtectedRoute role="admin">
-                      <Page1 user={user} setUser={setUser} products={products} categories={categories} />
+                      <Home user={user} setUser={setUser} products={products} categories={categories} />
                     </ProtectedRoute>
                   } 
                 />
                 <Route 
-                  path="/page2" 
+                  path="/kategori" 
                   element={
                     <ProtectedRoute role="admin">
-                      <Page2 user={user} setUser={setUser} categories={categories} products={products} />
+                      <Kategori user={user} setUser={setUser} categories={categories} products={products} />
                     </ProtectedRoute>
                   } 
                 />
                 <Route 
-                  path="/page3" 
+                  path="/produk" 
                   element={
                     <ProtectedRoute role="admin">
-                      <Page3 user={user} setUser={setUser} products={products} productImages={productImages} categories={categories} />
+                      <Produk user={user} setUser={setUser} products={products} productImages={productImages} categories={categories} />
                     </ProtectedRoute>
                   } 
                 />
                 <Route 
-                  path="/page4" 
+                  path="/pengguna" 
                   element={
                     <ProtectedRoute role="admin">
-                      <Page4 userAdmin={userAdmin} />
+                      <Pengguna userAdmin={userAdmin} />
                     </ProtectedRoute>
                   } 
                 />
                 <Route 
-                  path="/page5" 
+                  path="/informasi" 
                   element={
                     <ProtectedRoute role="admin">
-                      <Page5 information={information} />
+                      <Informasi information={information} />
                     </ProtectedRoute>
                   } 
                 />
-                <Route path="/" element={<Navigate to="/dashboard/page1" />} />
+                <Route path="/" element={<Navigate to="/dashboard/home" />} />
               </Routes>
             </div>
             <Footer />

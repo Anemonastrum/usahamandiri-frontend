@@ -34,9 +34,9 @@ const Sidebar = ({ isCollapsed, user, setUser }) => {
           href="#profileModal"
         >
           <img
-            src={`${assetUrl}/rds.heic`}
+            src={`${assetUrl}/admin.webp`}
             className="img-fluid"
-            alt="Profile Picture"
+            alt="admim guys"
             style={{ borderRadius: "100px", border: "0.5px solid #d9d9d9" }}
           />
         </a>
@@ -45,35 +45,35 @@ const Sidebar = ({ isCollapsed, user, setUser }) => {
       </div>
       <ul className="flex-column d-block list-group w-100 align-items-center justify-content-center">
         <NavLink
-          to="/dashboard/page1"
+          to="/dashboard/home"
           className="list-group-item list-group-item-action sidebar-item"
           activeClassName="active"
         >
           <i className="fas fa-home fa-fw me-4"></i>Dashboard
         </NavLink>
         <NavLink
-          to="/dashboard/page2"
+          to="/dashboard/kategori"
           className="list-group-item list-group-item-action sidebar-item"
           activeClassName="active"
         >
           <i className="fas fa-plus fa-fw me-4"></i>Kategori
         </NavLink>
         <NavLink
-          to="/dashboard/page3"
+          to="/dashboard/produk"
           className="list-group-item list-group-item-action sidebar-item"
           activeClassName="active"
         >
           <i className="fas fa-list fa-fw me-4"></i>Produk
         </NavLink>
         <NavLink
-          to="/dashboard/page4"
+          to="/dashboard/pengguna"
           className="list-group-item list-group-item-action sidebar-item"
           activeClassName="active"
         >
           <i className="fas fa-user fa-fw me-4"></i>Pengguna
         </NavLink>
         <NavLink
-          to="/dashboard/page5"
+          to="/dashboard/informasi"
           className="list-group-item list-group-item-action sidebar-item"
           activeClassName="active"
         >
