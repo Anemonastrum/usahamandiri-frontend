@@ -87,35 +87,13 @@ const LandingPage = () => {
     nvCss2.rel = "stylesheet";
     nvCss2.href = `${assetUrl}/css/nivo-lightbox/default.css`;
     document.head.appendChild(nvCss2);
-
-    const addScript = (src, id) => {
-      const script = document.createElement('script');
-      script.src = src;
-      script.async = true;
-      script.id = id;
-      document.body.appendChild(script);
-    };
-
-    const removeScript = (id) => {
-      const script = document.getElementById(id);
-      if (script) {
-        document.body.removeChild(script);
-      }
-    };
-
-    const scripts = [
-      { src: 'https://cdn.usahamandirimagelang.com/js/jquery.1.11.1.js', id: 'externalScript1' },
-      { src: 'https://cdn.usahamandirimagelang.com/js/bootstrap.js', id: 'externalScript2' },
-    ];
-
-    scripts.forEach(script => addScript(script.src, script.id));
     
     return () => {
       document.head.removeChild(landingCss);
       document.head.removeChild(bsCss);
       document.head.removeChild(nvCss);
       document.head.removeChild(nvCss2);
-      scripts.forEach(script => removeScript(script.id));
+    
 
     };
   }, [apiUrl, assetUrl]);
