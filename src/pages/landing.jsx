@@ -20,11 +20,11 @@ const LandingPage = () => {
   const [landingPageData, setLandingPageData] = useState({});
   const [loading, setLoading] = useState(true);
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [products, setProducts] = useState([]);
   const assetUrl = process.env.REACT_APP_ASSET_URL;
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-
     setTimeout(() => {
       setLandingPageData(JsonData);
       setLoading(false);
@@ -33,14 +33,40 @@ const LandingPage = () => {
     const fetchPhoneNumber = async () => {
       try {
         const response = await axios.get(`${apiUrl}/information`);
-        const info = response.data[0]; // Assuming the first entry contains the information you need
-        setPhoneNumber(info.whatsapp); // Adjust to match the structure of your response
+        const info = response.data[0];
+        setPhoneNumber(info.whatsapp);
       } catch (error) {
         console.error("Error fetching phone number:", error);
       }
     };
 
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/products`);
+        const productsData = response.data;
+
+        const productImagesPromises = productsData.map(async (product) => {
+          try {
+            const imageResponse = await axios.get(`${apiUrl}/productImages/product/${product._id}`);
+            return {
+              ...product,
+              image: imageResponse.data[0],
+            };
+          } catch (error) {
+            console.error(`Error fetching image for product ${product._id}:`, error);
+            return product;
+          }
+        });
+
+        const productsWithImages = await Promise.all(productImagesPromises);
+        setProducts(productsWithImages);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
     fetchPhoneNumber();
+    fetchProducts();
 
     const bsCss = document.createElement("link");
     bsCss.rel = "stylesheet";
@@ -62,23 +88,11 @@ const LandingPage = () => {
     nvCss2.href = `${assetUrl}/css/nivo-lightbox/default.css`;
     document.head.appendChild(nvCss2);
 
-    // const jqScript = document.createElement("script");
-    // jqScript.src = `${assetUrl}/js/jquery.1.11.1.js`;
-    // jqScript.async = true;
-    // document.body.appendChild(jqScript);
-
-    // const bsScript = document.createElement("script");
-    // bsScript.src = `${assetUrl}/js/bootstrap.js`;
-    // bsScript.async = true;
-    // document.body.appendChild(bsScript);
-
     return () => {
       document.head.removeChild(landingCss);
       document.head.removeChild(bsCss);
       document.head.removeChild(nvCss);
       document.head.removeChild(nvCss2);
-      // document.body.removeChild(jqScript);
-      // document.body.removeChild(bsScript);
     };
   }, []);
 
@@ -103,7 +117,7 @@ const LandingPage = () => {
           <Header data={landingPageData.Header} />
           <Features data={landingPageData.Features} />
           <Services data={landingPageData.Services} />
-          <Gallery data={landingPageData.Gallery} phoneNumber={phoneNumber} />
+          <Gallery products={products} phoneNumber={phoneNumber} />
           <About data={landingPageData.About} />
           <Contact data={landingPageData.Contact} />
         </>

@@ -3,14 +3,12 @@ import React, { useState } from "react";
 export const Image = ({ title, largeImage, smallImage, phoneNumber }) => {
   const [linkUrl, setLinkUrl] = useState(largeImage);
 
-  // Handle mouse enter to change link to WhatsApp
   const handleMouseEnter = () => {
     setLinkUrl(
       `https://wa.me/${phoneNumber}?text=Halo, saya berminat untuk menanyakan tentang ketersediaan produk ${title} dari website usahamandirimagelang.com.`
     );
   };
 
-  // Handle mouse leave to revert link back to the image URL
   const handleMouseLeave = () => {
     setLinkUrl(largeImage);
   };
@@ -18,7 +16,6 @@ export const Image = ({ title, largeImage, smallImage, phoneNumber }) => {
   return (
     <div className="portfolio-item">
       <div className="hover-bg">
-        {" "}
         <a
           href={linkUrl}
           title={title}
@@ -31,8 +28,8 @@ export const Image = ({ title, largeImage, smallImage, phoneNumber }) => {
           <div className="hover-text">
             <h4>{title}</h4>
           </div>
-          <img src={smallImage} className="img-responsive" alt={title} />{" "}
-        </a>{" "}
+          <img src={smallImage} className="img-responsive" alt={title} />
+        </a>
       </div>
     </div>
   );

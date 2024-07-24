@@ -1,9 +1,7 @@
 import { Image } from "./image";
 import React from "react";
 
-export const Gallery = (props) => {
-  const { data, phoneNumber } = props;
-
+export const Gallery = ({ products, phoneNumber }) => {
   return (
     <div id="gallery" className="text-center">
       <div className="container">
@@ -16,21 +14,23 @@ export const Gallery = (props) => {
         </div>
         <div className="row">
           <div className="portfolio-items">
-            {data
-              ? data.map((d, i) => (
-                  <div
-                    key={`${d.title}-${i}`}
-                    className="col-sm-6 col-md-4 col-lg-4"
-                  >
-                    <Image
-                      title={d.title}
-                      largeImage={d.largeImage}
-                      smallImage={d.smallImage}
-                      phoneNumber={phoneNumber} // Pass phone number here
-                    />
-                  </div>
-                ))
-              : "Loading..."}
+            {products.length > 0 ? (
+              products.slice(0, 6).map((product, i) => (
+                <div
+                  key={`${product.name}-${i}`}
+                  className="col-sm-6 col-md-4 col-lg-4"
+                >
+                  <Image
+                    title={product.name}
+                    largeImage={product.image ? product.image.url : ""}
+                    smallImage={product.image ? product.image.url : ""}
+                    phoneNumber={phoneNumber}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="col-12">Loading...</div>
+            )}
           </div>
         </div>
       </div>
